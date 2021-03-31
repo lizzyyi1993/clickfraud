@@ -33,9 +33,11 @@ time-series patterns throughout the days. Based on the visualizations below, we 
 
 ## Feature Engineering
 The key trait for fraudulent ad clicks is that the abnormally high amount of clicks in a sequence which generate no download. Hence we thought it might be interesting to explore how long it takes for a user given ip-app-channel-os-device before he or she performs the next click.
+
 Therefore, we grouped the data by the combination of ['ip', 'os', 'device', 'app', 'channel'] and calculated the "time till next click" to create 7 new features. Notice that this created null values under the new columns, and we replaced them with 0.
 
-## Model Building 
+## Model Building
+### Train Test Split
+We used the smote Python package to solve the data imbalance problem, and randomly splitted the data into 70/30, with 70% of the data being training data and the rest 30% being testing data. We then scaled all the data to keep them at the same level for Logistic Regression and K-Nearest-Neighbour (KNN) model. For a better Logistic Regression model performance, we also conducted PCA and the minimum number of principal components to retain such that 95% of the variance was retained is 12. Moreover, we conducted a clustering analysis on the training data, which was visualized using t-sne.
 
-
-## Performance Evaluation
+### Performance Evaluation
