@@ -38,6 +38,14 @@ Therefore, we grouped the data by the combination of ['ip', 'os', 'device', 'app
 
 ## Model Building
 ### Train Test Split
-We used the smote Python package to solve the data imbalance problem, and randomly splitted the data into 70/30, with 70% of the data being training data and the rest 30% being testing data. We then scaled all the data to keep them at the same level for Logistic Regression and K-Nearest-Neighbour (KNN) model. For a better Logistic Regression model performance, we also conducted PCA and the minimum number of principal components to retain such that 95% of the variance was retained is 12. Moreover, we conducted a clustering analysis on the training data, which was visualized using t-sne.
+We used the smote Python package to solve the data imbalance problem, and randomly splitted the data into 70/30, with 70% of the data being training data and the rest 30% being testing data. We then scaled all the data to keep them at the same level for Logistic Regression and K-Nearest-Neighbour (KNN) model.
+
+For a better Logistic Regression model performance, we also conducted PCA and the minimum number of principal components to retain such that 95% of the variance was retained is 12. Moreover, we conducted a clustering analysis on the training data, which was visualized using t-sne.
 
 ### Performance Evaluation
+We built 6 models: Logistic Regression, Linear Discrimination Analysis, K-Nearest- Neighbour (KNN), Decision Tree (CART), Support Vector Machine (SVM) and Random Forest. We then compared the models based on their ROC_AUC score using 10-fold cross validation. Because Logistic Regression is the most frequently used machine learning model in practise, we tuned the logistic regression model using L2 regularization to improve the performance metric.
+
+Turned out that Random Forest is still the best model with an accuracy rate of 99.9 AUC_ROC score. Therefore, we further conducted the variable importance analysis on Random Forest, and found that app, device and ip are the top 3 most important factors in predicting the fraud behavior. It indicates that fraud clicks tend to centralize on certain apps in order to get higher premiums for click counts and fraud clicks also tend to happen on certain device types and some ip addresses.
+
+## Recommendations
+We recommended that Random Forest should be used to measure the journey of users’ clicks across their activities and predict if the click will lead to downloading the app or not. It will add tremendous value to business because it will prevent the potential click frauds for app developers by analyzing users’ click behaviors. With this information, companies can prevent illegitimate clicks more proactively, and create a blacklist of users who have abnormal behaviors and avoid paying the ads commissioner for fraudulent clicking activities. which saves companies tons of money on paying for fake clicks.
