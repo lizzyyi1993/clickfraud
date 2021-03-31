@@ -36,7 +36,7 @@ The key trait for fraudulent ad clicks is that the abnormally high amount of cli
 
 Therefore, we grouped the data by the combination of ['ip', 'os', 'device', 'app', 'channel'] and calculated the "time till next click" to create 7 new features. Notice that this created null values under the new columns, and we replaced them with 0.
 
-## Model Building
+## Model Selection
 ### Train Test Split
 We used the smote Python package to solve the data imbalance problem, and randomly splitted the data into 70/30, with 70% of the data being training data and the rest 30% being testing data. We then scaled all the data to keep them at the same level for Logistic Regression and K-Nearest-Neighbour (KNN) model.
 
